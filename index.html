@@ -1,353 +1,47 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Weekly Multilingual Message</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&family=Noto+Sans:wght@400;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --bg: #f5f7fb;
-      --card: #ffffff;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --primary: #0f766e;
-      --primary-dark: #115e59;
-      --border: #dbe3ea;
-      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-      --radius: 18px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: linear-gradient(135deg, #eef6f7, #f8f8fc);
-      color: var(--text);
-      font-family: "Noto Sans", sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 780px;
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 32px 24px;
-    }
-
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-bottom: 24px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 1.8rem;
-      line-height: 1.2;
-    }
-
-    .subtitle {
-      margin: 8px 0 0;
-      color: var(--muted);
-      font-size: 0.98rem;
-    }
-
-    .lang-switcher {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .lang-btn {
-      border: 1px solid var(--border);
-      background: #fff;
-      color: var(--text);
-      padding: 10px 16px;
-      border-radius: 999px;
-      cursor: pointer;
-      font-size: 0.95rem;
-      font-weight: 600;
-      transition: 0.2s ease;
-    }
-
-    .lang-btn:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-    }
-
-    .lang-btn.active {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: #fff;
-    }
-
-    .message-box {
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      background: #fcfdfd;
-      padding: 24px;
-      min-height: 220px;
-    }
-
-    .label {
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin-bottom: 12px;
-      font-weight: 600;
-    }
-
-    #message {
-      margin: 0;
-      font-size: 1.15rem;
-      line-height: 1.9;
-      white-space: pre-wrap;
-      word-wrap: break-word;
-    }
-
-    .meta {
-      margin-top: 18px;
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    .status {
-      margin-top: 18px;
-      font-size: 0.92rem;
-      color: var(--muted);
-    }
-
-    .loading {
-      color: var(--muted);
-      font-style: italic;
-    }
-
-    .error {
-      color: #b91c1c;
-      font-weight: 600;
-    }
-
-    body.rtl {
-      font-family: "Noto Naskh Arabic", "Noto Nastaliq Urdu", serif;
-    }
-
-    body.rtl #message {
-      font-size: 1.25rem;
-    }
-
-    @media (max-width: 640px) {
-      .card {
-        padding: 22px 16px;
-      }
-
-      h1 {
-        font-size: 1.45rem;
-      }
-
-      #message {
-        font-size: 1.05rem;
-      }
-
-      body.rtl #message {
-        font-size: 1.15rem;
-      }
-
-      .topbar {
-        align-items: flex-start;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Message</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .card { background: white; width: 90%; max-width: 600px; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .lang-btns { display: flex; gap: 10px; margin-bottom: 20px; }
+        button { padding: 8px 16px; border: none; border-radius: 5px; cursor: pointer; background: #00796b; color: white; }
+        #content { 
+            white-space: pre-wrap; /* RESPECTS NEW LINES & INDENTS */
+            padding: 15px; 
+            border: 1px solid #eee; 
+            background: #fafafa; 
+            min-height: 150px; 
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
     <div class="card">
-      <div class="topbar">
-        <div>
-          <h1>Weekly Message</h1>
-          <p class="subtitle">Choose a language to read the latest paragraph.</p>
+        <h2>Weekly Message</h2>
+        <div class="lang-btns">
+            <button onclick="updateDisplay('english')">English</button>
+            <button onclick="updateDisplay('arabic')">العربية</button>
+            <button onclick="updateDisplay('urdu')">اردو</button>
         </div>
-
-        <div class="lang-switcher" aria-label="Language switcher">
-          <button class="lang-btn active" data-lang="english">English</button>
-          <button class="lang-btn" data-lang="arabic">العربية</button>
-          <button class="lang-btn" data-lang="urdu">اردو</button>
-        </div>
-      </div>
-
-      <div class="message-box">
-        <div class="label" id="currentLanguageLabel">English</div>
-        <p id="message" class="loading">Loading content...</p>
-      </div>
-
-      <div class="meta" id="updatedInfo">Weekly content from Google Sheets</div>
-      <div class="status" id="statusText"></div>
+        <div id="content" class="message-area">Loading...</div>
     </div>
-  </div>
 
-  <script>
-    const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQTvA3ftahPKidlDQYn7iXa2Q6E8w7xLjHuc4b7KjAwcwYKZLe5Pi6DIbXmGCFWGyYi8YC9PE0_gMac/pub?output=csv";
-
-    let sheetData = null;
-    let currentLang = "english";
-
-    const messageEl = document.getElementById("message");
-    const statusEl = document.getElementById("statusText");
-    const labelEl = document.getElementById("currentLanguageLabel");
-    const buttons = document.querySelectorAll(".lang-btn");
-
-    function parseCSVLine(line) {
-      const result = [];
-      let current = "";
-      let insideQuotes = false;
-
-      for (let i = 0; i < line.length; i++) {
-        const char = line[i];
-        const nextChar = line[i + 1];
-
-        if (char === '"') {
-          if (insideQuotes && nextChar === '"') {
-            current += '"';
-            i++;
-          } else {
-            insideQuotes = !insideQuotes;
-          }
-        } else if (char === ',' && !insideQuotes) {
-          result.push(current);
-          current = "";
-        } else {
-          current += char;
+    <script>
+        let jsonData = {};
+        async function fetchJSON() {
+            try {
+                const res = await fetch('https://api.jsonstorage.net/v1/json/f247d79b-11b3-48f6-8d96-24e206ad561d/83a55d13-65bf-466c-81d4-bc36c2c1896a');
+                jsonData = await res.json();
+                updateDisplay('english');
+            } catch(e) { document.getElementById('content').innerText = "Error loading content."; }
         }
-      }
-
-      result.push(current);
-      return result;
-    }
-
-    function csvToObjects(csvText) {
-      const lines = csvText
-        .split(/\\r?\\n/)
-        .filter(line => line.trim() !== "");
-
-      if (lines.length < 2) return [];
-
-      const headers = parseCSVLine(lines[0]).map(h => h.trim().toLowerCase());
-      const rows = [];
-
-      for (let i = 1; i < lines.length; i++) {
-        const values = parseCSVLine(lines[i]);
-        const row = {};
-
-        headers.forEach((header, index) => {
-          row[header] = (values[index] || "").trim();
-        });
-
-        rows.push(row);
-      }
-
-      return rows;
-    }
-
-    async function loadSheetData() {
-      try {
-        statusEl.textContent = "Loading latest weekly content...";
-        const response = await fetch(SHEET_CSV_URL);
-
-        if (!response.ok) {
-          throw new Error("Could not fetch Google Sheet data.");
+        function updateDisplay(lang) {
+            document.getElementById('content').innerText = jsonData[lang] || "No content.";
         }
-
-        const csvText = await response.text();
-        const rows = csvToObjects(csvText);
-
-        if (!rows.length) {
-          throw new Error("No content found in the sheet.");
-        }
-
-        sheetData = rows[0];
-        statusEl.textContent = "Content loaded successfully.";
-        updateLanguage(currentLang);
-      } catch (error) {
-        messageEl.textContent = "Unable to load content. Please check your Google Sheet CSV link and make sure the sheet is published to the web.";
-        messageEl.className = "error";
-        statusEl.textContent = error.message;
-      }
-    }
-
-    function updateDirection(lang) {
-      const html = document.documentElement;
-
-      if (lang === "arabic") {
-        html.setAttribute("lang", "ar");
-        html.setAttribute("dir", "rtl");
-        document.body.classList.add("rtl");
-        labelEl.textContent = "العربية";
-      } else if (lang === "urdu") {
-        html.setAttribute("lang", "ur");
-        html.setAttribute("dir", "rtl");
-        document.body.classList.add("rtl");
-        labelEl.textContent = "اردو";
-      } else {
-        html.setAttribute("lang", "en");
-        html.setAttribute("dir", "ltr");
-        document.body.classList.remove("rtl");
-        labelEl.textContent = "English";
-      }
-    }
-
-    function updateButtons(lang) {
-      buttons.forEach(button => {
-        button.classList.toggle("active", button.dataset.lang === lang);
-      });
-    }
-
-    function updateLanguage(lang) {
-      currentLang = lang;
-      updateDirection(lang);
-      updateButtons(lang);
-
-      if (!sheetData) {
-        messageEl.textContent = "Loading content...";
-        messageEl.className = "loading";
-        return;
-      }
-
-      const text = sheetData[lang];
-
-      if (text && text.trim() !== "") {
-        messageEl.textContent = text;
-        messageEl.className = "";
-      } else {
-        messageEl.textContent = "No text available for this language yet.";
-        messageEl.className = "loading";
-      }
-    }
-
-    buttons.forEach(button => {
-      button.addEventListener("click", () => {
-        updateLanguage(button.dataset.lang);
-      });
-    });
-
-    loadSheetData();
-  </script>
+        fetchJSON();
+    </script>
 </body>
 </html>
