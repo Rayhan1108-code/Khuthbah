@@ -23,7 +23,7 @@
         let sheetData = {};
 
         async function fetchSheet() {
-            const url = 'PASTE_YOUR_CSV_LINK_HERE'; // <--- PUT YOUR LINK HERE
+            const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQTvA3ftahPKidlDQYn7iXa2Q6E8w7xLjHuc4b7KjAwcwYKZLe5Pi6DIbXmGCFWGyYi8YC9PE0_gMac/pub?output=csv'; // <--- PUT YOUR LINK HERE
             const res = await fetch(url);
             const csv = await res.text();
             const lines = csv.split('\n');
